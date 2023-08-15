@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path("", views.index, name="index"),
@@ -14,4 +15,5 @@ urlpatterns = [
         views.SingleBookingItemView.as_view(),
         name="booking-single",
     ),
+    path("api-token-auth/", obtain_auth_token),
 ]
