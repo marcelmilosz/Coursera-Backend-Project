@@ -3,8 +3,13 @@ from django.http import HttpResponse
 
 # Api / Rest
 from rest_framework import generics
-from .models import Menu
-from .serializers import MenuSerializer, MenuItemSerializer
+from .models import Menu, Booking
+from .serializers import (
+    MenuSerializer,
+    MenuItemSerializer,
+    BookingSerializer,
+    BookingItemSerializer,
+)
 
 
 # Create your views here.
@@ -26,3 +31,13 @@ class MenuView(generics.ListCreateAPIView):
 class SingleMenuItemView(generics.RetrieveAPIView):
     queryset = Menu.objects.all()  # Retrieve all objects
     serializer_class = MenuItemSerializer
+
+
+class BookingView(generics.ListCreateAPIView):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+
+
+class SingleBookingItemView(generics.RetrieveAPIView):
+    queryset = Booking.objects.all()  # Retrieve all objects
+    serializer_class = BookingItemSerializer
